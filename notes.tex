@@ -1,70 +1,125 @@
 \documentclass{ctexart}
+\usepackage{anyfontsize}
 \usepackage{hyperref}
-\usepackage{amsmath,graphicx}
+\usepackage{graphicx}
+\usepackage{amsmath,amsthm}
 
 \author{夏海淞}
 \title{线性代数笔记}
 \date{\today}
 
-\CTEXsetup[name={第,章}]{section}
-\CTEXsetup[number={\chinese{section}}]{section}
+\ctexset { section = { name={第,章} } }
+\ctexset { section = { number={\chinese {section}} } }
 
-\newtheorem{theorem}{定理}[subsection]
-\newtheorem{lemma}[theorem]{引理}
-\newtheorem{definition}{定义}[subsection]
+\input{headers.tex}
 
 \begin{document}
-    \maketitle
-    \tableofcontents
+\maketitle
+\tableofcontents
 \section{矩阵}
 
 \subsection{矩阵和向量的基本概念}
 
-\subsubsection{矩阵的基本概念}
+\subsubsection*{矩阵的基本概念}
 
-\begin{definition}[矩阵]
-    
-\end{definition}
-\begin{definition}[转置矩阵]
-    
-\end{definition}
-\begin{definition}[对称/对角/纯量/单位阵]
-    
-\end{definition}
-\begin{definition}[三角阵]
-    
-\end{definition}
-
-\subsubsection{向量的基本概念}
-
-\begin{definition}[向量]
-    
-\end{definition}
-\begin{definition}[零向量]
-    
-\end{definition}
+\subsubsection*{向量的基本概念}
 
 \subsection{矩阵与向量的运算}
 
-\subsubsection{矩阵（向量）的线性运算}
+\subsubsection*{矩阵（向量）的线性运算}
 
-\begin{definition}[矩阵加法]
-    
-\end{definition}
-\begin{definition}[矩阵数乘]
-    
-\end{definition}
-\begin{definition}[矩阵线性组合]
-    
-\end{definition}
+\subsubsection*{向量的内积与矩阵的乘法}
 
-\subsubsection{向量的内积与矩阵的乘法}
+\begin{property}
+    设矩阵\(\mata_{m\times l},\matb_{l\times n}\)，则\(\mypar{\mata\matb}^\top=\matb^\top\mata^\top\)。
+\end{property}
 
-\begin{definition}[向量内积]
-    
-\end{definition}
-\begin{definition}[矩阵乘法]
-    
-\end{definition}
+\begin{property}
+    设矩阵\(\mata_{m\times n},\matb_{n\times m}\)，则\(\trace{\mata\matb}=\trace{\matb\mata}\)。
+\end{property}
+
+\begin{property}
+    设\(\mata\)为\(m\times n\)矩阵，\(\mati_m\)和\(\mati_n\)分别为\(m\)阶单位阵和\(n\)阶单位阵，则\(\mati_m\mata=\mata\mati_n=\mata\)。
+\end{property}
+
+\begin{property}
+    设\(\mata=\diag{a_1,a_2,\dots,a_n}\)，\(\matb=\diag{b_1,b_2,\dots,b_n}\)，则\(\mata\matb=\matb\mata=\diag{a_1b_1,a_2b_2,\dots,a_nb_n}\)。
+\end{property}
+
+\begin{property}
+    设\(\mata\)与\(\matb\)均为\(n\)阶上（下）三角阵，则\(\mata\matb\)是上（下）三角阵。
+\end{property}
+
+\subsubsection*{方阵的幂}
+
+\subsection{分块矩阵及其运算}
+
+\subsubsection*{分块矩阵}
+
+\subsubsection*{分块矩阵的基本运算}
+
+\subsection{矩阵的初等变换与秩}
+
+\subsubsection*{矩阵的初等变换}
+
+\begin{theorem}
+    对矩阵\(\mata_{m\times n}\)作一次初等行变换，相当于在\(\mata_{m\times n}\)的左边乘上一个相应的\(m\)阶初等矩阵；对矩阵\(\mata_{m\times n}\)作一次初等列变换，相当于在\(\mata_{m\times n}\)的右边乘上一个相应的\(n\)阶初等矩阵。
+\end{theorem}
+
+\subsubsection*{矩阵的标准形与秩}
+
+\begin{lemma}
+    设两个\(m\times n\)矩阵的标准形如下所示
+    \begin{equation*}
+        \matp_1=\begin{bmatrix}
+            \mati_{r_1} & \mato \\\mato&\mato
+        \end{bmatrix},
+        \matp_2=\begin{bmatrix}
+            \mati_{r_2} & \mato \\\mato&\mato
+        \end{bmatrix},
+    \end{equation*}
+    如果\(r_1\neq r_2\)，则\(\matp_2\)不能由\(\matp_1\)经过初等变换得到。
+\end{lemma}
+
+\begin{theorem}
+    任一非零矩阵经有限次初等变换可化为标准形
+    \begin{equation*}
+        \begin{bmatrix}
+            \mati_r & \mato \\\mato&\mato
+        \end{bmatrix}
+    \end{equation*}
+    且对于给定的矩阵，其标准形中\(r\)的值是唯一确定的。
+\end{theorem}
+
+\begin{infer}
+    矩阵经过初等变换后其秩不变。
+\end{infer}
+
+\begin{theorem}
+    设\(m\times n\)矩阵\(\mata\)和\(\matb\)，下列三个命题等价：
+    \begin{enumerate}
+        \item 矩阵\(\mata\)与\(\matb\)的秩相等；
+        \item 矩阵\(\mata\)与\(\matb\)具有相同的标准形；
+        \item 矩阵\(\mata\)经有限次初等变换可化为矩阵\(\matb\)。
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    \(\rank{\mata^\top}=\rank{\mata}\)。
+\end{theorem}
+
+\begin{theorem}
+    任一非零矩阵只经初等行变换可化为（最简）阶梯型矩阵。
+\end{theorem}
+
+\begin{infer}
+    非零矩阵的秩等于其（最简）阶梯型矩阵中主元列的个数。
+\end{infer}
+
+\section{线性方程组}
+
+\subsection{横看线性方程组}
+
+\subsubsection*{齐次线性方程组的解}
 
 \end{document}
