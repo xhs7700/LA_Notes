@@ -122,4 +122,188 @@
 
 \subsubsection*{齐次线性方程组的解}
 
+\begin{theorem}
+    齐次线性方程组只有零解当且仅当系数矩阵的秩等于未知量的个数；齐次线性方程组有非零解当且仅当系数矩阵的秩小于未知量的个数。
+\end{theorem}
+
+\subsubsection*{非齐次线性方程组的解}
+
+\begin{theorem}
+    线性方程组有解的充要条件是系数矩阵的秩等于增广矩阵的秩。
+\end{theorem}
+
+\subsection{纵看线性方程组}
+
+\subsubsection*{线性相关与向量组的秩}
+
+\begin{theorem}
+    向量组\(\enums{\vecal}{s}(s\ge2)\)线性相关的充要条件是该向量组中至少有一个向量可由其余向量线性表出。
+\end{theorem}
+
+\begin{theorem}
+    向量组\(\enums{\vecal}{s}\)线性相关当且仅当矩阵\(\mata=\mat{\enums{\vecal}{s}}\)的秩\(\rank{\mata}<s\)；向量组\(\enums{\vecal}{s}\)线性无关当且仅当\(\rank{\mata}=s\)。
+\end{theorem}
+
+\begin{infer}
+    \(s(s>n)\)个\(n\)元向量线性相关。
+\end{infer}
+
+\begin{lemma}
+    设向量组\(\enums{\vecal}{s}\)线性无关，而向量组\(\enums{\vecal}{s},\vecal\)线性相关，则\(\vecal\)可由\(\enums{\vecal}{s}\)线性表出，且线性表示式唯一。
+\end{lemma}
+
+\begin{theorem}
+    向量组中任一向量都可由该向量组的极大线性无关组线性表出。
+\end{theorem}
+
+\begin{lemma}
+    设向量组\(\enums{\vecal}{r}\)可由向量组\(\enums{\vecbeta}{s}\)线性表出，若向量组\(\enums{\vecal}{r}\)线性无关，则\(r\le s\)。
+\end{lemma}
+
+\begin{theorem}
+    一个向量组的任意两个极大线性无关组可以相互线性表出，且所含向量的个数相等。
+\end{theorem}
+
+\begin{theorem}
+    矩阵的秩等于列（行）秩。
+\end{theorem}
+
+\begin{theorem}
+    \(\rank{\mata\matb}\le\min\setof{\rank{\mata},\rank{\matb}}\)，其中\(\mata,\matb\)分别为\(m\times l,l\times n\)矩阵。
+\end{theorem}
+
+\begin{infer}
+    设\(\vecal\)为\(n\)元非零行向量，则\(\rank{\vecal\vecal^\top}=1\)。
+\end{infer}
+
+\subsubsection*{齐次线性方程组的基础解系}
+
+\begin{theorem}
+    设\(\enums{\vecx}{t}\)均为齐次线性方程组\(\mata\vecx=\veczero\)的解，则\(\enums{\vecx}{t}\)的线性组合也是\(\mata\vecx=\veczero\)的解。
+\end{theorem}
+
+\begin{theorem}
+    设\(\rank{\mata_{m\times n}}=r\)，若\(\mata\vecx=\veczero\)有非零解，则该齐次线性方程组有基础解系，且基础解系含有\(n-r\)个解。
+\end{theorem}
+
+\begin{theorem}
+    设\(\mata\)为\(m\times n\)矩阵，\(\vecb\)为\(m\)元列向量，则
+    \begin{enumerate}
+        \item \(\rank{\mata\mata^\top}=\rank{\mata}=\rank{\mata^\top}\)；
+        \item 线性方程组\(\mata^\top\mata\vecx=\mata\vecb\)一定有解。
+    \end{enumerate}
+\end{theorem}
+
+\subsubsection*{非齐次线性方程组解的结构}
+
+\begin{theorem}
+    设\(\vecx_0\)是非齐次线性方程组\(\mata\vecx=\vecb\)的某个特定解（简称为特解），\(\vecy\)是相应齐次线性方程组\(\mata\vecx=\veczero\)的通解，则非齐次线性方程组\(\mata\vecx=\vecb\)的通解为\(\vecx=\vecx_0+\vecy\)。
+\end{theorem}
+
+\subsection{逆矩阵}
+
+\subsubsection*{可逆矩阵的定义与性质}
+
+\begin{theorem}
+    设\(\mata\)是\(n\)阶方阵，下述若干命题等价：
+    \begin{enumerate}
+        \item \(\rank{\mata}=n\)；
+        \item 存在\(n\)阶方阵\(\matb\)使\(\mata\matb=\mati\)；
+        \item 存在\(n\)阶方阵\(\matc\)使\(\matc\mata=\mati\)；
+        \item \(\mata\)的列向量组线性无关；
+        \item \(\mata\)的行向量组线性无关；
+        \item \(\mata\vecx=\veczero\)只有零解；
+        \item \(\mata\)可经过初等变换化为标准形\(\mati\)。
+    \end{enumerate}
+\end{theorem}
+
+\begin{property}
+    设\(\mata\)是\(n\)阶可逆矩阵，则
+    \begin{enumerate}
+        \item \(\inv{\mypar{\inv{\mata}}}=\mata\)；
+        \item \(\inv{\mypar{k\mata}}=\inv{k}\inv{\mata}\)；
+        \item \(\inv{\mypar{\mata^\top}}=\mypar{\inv{\mata}}^\top\)；
+        \item \(\inv{\mypar{\mata\matb}}=\inv{\matb}\inv{\mata}\)，其中\(\matb\)也是\(n\)阶可逆矩阵。
+    \end{enumerate}
+\end{property}
+
+\begin{infer}
+    设\(\enums{\mata}{k}\)是\(n\)阶可逆矩阵，则\(\mata_1\mata_2\cdots\mata_k\)也可逆，且\(\inv{\mypar{\mata_1\mata_2\cdots\mata_k}}=\inv{\mata_k}\cdots\inv{\mata_2}\inv{\mata_1}\)。
+\end{infer}
+
+\begin{property}
+    \begin{enumerate}
+        \item 若对角阵可逆，则其逆矩阵仍为对角阵；
+        \item 若对称阵可逆，则其逆矩阵仍为对称阵。
+    \end{enumerate}
+\end{property}
+
+\begin{theorem}
+    初等阵可逆，且初等阵的逆矩阵仍为初等阵。
+\end{theorem}
+
+\subsubsection*{用初等变换求逆矩阵}
+
+\begin{theorem}
+    任一秩为\(r\)的非零矩阵\(\mata_{m\times n}\)，必存在\(m\)阶可逆矩阵\(\matp\)及\(n\)阶可逆矩阵\(\matq\)，使得
+    \begin{equation*}
+        \matp\mata\matq=\begin{bmatrix}
+            \mati_r & \mato \\\mato&\mato
+        \end{bmatrix}
+    \end{equation*}
+\end{theorem}
+
+\begin{infer}
+    任一秩为\(r\)的非零矩阵\(\mata_{m\times n}\)，必存在\(m\)阶可逆矩阵\(\tilde{\matp}\)及\(n\)阶可逆矩阵\(\tilde{\matq}\)，使得
+    \begin{equation*}
+        \mata=\tilde{\matp}\begin{bmatrix}
+            \mati_r & \mato \\\mato&\mato
+        \end{bmatrix}\tilde{\matq}
+    \end{equation*}
+\end{infer}
+
+\begin{theorem}
+    方阵\(\mata\)可逆当且仅当下列条件之一成立：
+    \begin{enumerate}
+        \item 方阵\(\mata\)的标准形为单位阵；
+        \item 方阵\(\mata\)可表示成若干初等阵的乘积；
+        \item 方阵\(\mata\)仅经初等行变换可化为单位阵；
+        \item 方阵\(\mata\)仅经初等列变换可化为单位阵。
+    \end{enumerate}
+\end{theorem}
+
+\subsubsection*{正交阵}
+
+\begin{theorem}
+    设矩阵\(\mata\)为\(n\)阶方阵，则下列命题等价：
+    \begin{enumerate}
+        \item \(\mata\)为正交阵；
+        \item \(\mata^\top\mata=\mati\)；
+        \item \(\mata\mata^\top=\mati\)；
+        \item 将\(\mata\)按列分块为\(\mata=\mat{\enums{\vecal}{n}}\)，有\({\vecal_i}^\top\vecal_j=\delta_{ij}\)\((i,j=1,2,\dots,n)\)，其中\begin{equation*}
+                  \delta_{ij}=\begin{cases}
+                      1 & i=j \\0&i\neq j
+                  \end{cases}
+              \end{equation*}
+        \item 将\(\mata\)按行分块为\begin{equation*}
+                  \mata=\begin{bmatrix}
+                      \vecbeta_1 \\\vecbeta_2\\\vdots\\\vecbeta_n
+                  \end{bmatrix}
+              \end{equation*}有\(\vecbeta_i{\vecbeta_j}^\top=\delta_{ij}\)\(i,j=1,2,\dots,n\)。
+    \end{enumerate}
+\end{theorem}
+
+\begin{property}
+    \begin{enumerate}
+        \item 正交阵的积仍为正交阵；
+        \item 正交阵的逆矩阵（即其转置矩阵）仍为正交阵。
+    \end{enumerate}
+\end{property}
+
+\section{行列式}
+
+\subsection{行列式的定义}
+
+\subsubsection*{逆序数}
+
 \end{document}
