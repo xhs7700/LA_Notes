@@ -1,6 +1,6 @@
 \newtheorem{theorem}{定理}[subsection]
 \newtheorem{lemma}{引理}[subsection]
-\newtheorem{definition}{定义}[subsection]
+\newtheorem*{definition}{定义}
 \newtheorem{property}{性质}[subsection]
 \newtheorem{infer}{推论}[subsection]
 
@@ -15,8 +15,11 @@
 \newcommand{\trace}[1]{\func{Tr}{#1}}
 \newcommand{\diag}[1]{\func{diag}{#1}}
 \newcommand{\rank}[1]{\func{rank}{#1}}
+\newcommand{\adj}[1]{\func{adj}{#1}}
 \newcommand{\enums}[2]{{#1}_1,{#1}_2,\dots,{#1}_{#2}}
 \newcommand{\inv}[1]{{#1}^{-1}}
+
+\renewcommand{\det}[1]{\func{det}{#1}}
 
 \newcommand{\mata}{\bsym{A}}
 \newcommand{\matb}{\bsym{B}}
@@ -45,15 +48,19 @@
 \newcommand{\maty}{\bsym{Y}}
 \newcommand{\matz}{\bsym{Z}}
 
+\newcommand{\field}{\bsym{\mathrm{F}}}
+
 \newcommand{\veca}{\bsym{a}}
 \newcommand{\vecal}{\bsym{\alpha}}
 \newcommand{\vecb}{\bsym{b}}
 \newcommand{\vecbeta}{\bsym{\beta}}
 \newcommand{\vecc}{\bsym{c}}
 \newcommand{\vecd}{\bsym{d}}
+\newcommand{\vecdelta}{\bsym{\delta}}
 \newcommand{\vece}{\bsym{e}}
 \newcommand{\vecf}{\bsym{f}}
 \newcommand{\vecg}{\bsym{g}}
+\newcommand{\vecgamma}{\bsym{\gamma}}
 \newcommand{\vech}{\bsym{h}}
 \newcommand{\veci}{\bsym{i}}
 \newcommand{\vecj}{\bsym{j}}
