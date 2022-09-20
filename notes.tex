@@ -785,4 +785,160 @@
     正交变换保持向量的内积不变。
 \end{theorem}
 
+\section{特征值与二次型}
+
+\subsection{特征值与特征向量}
+
+\subsubsection*{特征值与特征向量的概念}
+
+\begin{theorem}
+    一个特征向量只能属于一个特征值。
+\end{theorem}
+
+\subsubsection*{特征值与特征向量的求法}
+
+\begin{theorem}
+    方阵\(\mata\)的全体特征根（重根在内）之和等于它的迹\(\trace{\mata}\)，而全体特征根的乘积等于它的行列式\(\det{\mata}\)。
+\end{theorem}
+
+\begin{theorem}
+    相似矩阵有相同的特征多项式。
+\end{theorem}
+
+\begin{definition}[代数重数与几何重数]
+    设\(\lambda_0\)是\(n\)阶方阵\(\mata\)的一个特征值，\(V_0\)是属于\(\lambda_0\)的特征子空间，则\(\lambda_0\)作为方阵\(\mata\)的特征多项式根的重数称为\(\lambda_0\)的\emph{代数重数}，特征子空间\(V_0\)的维数称为\(\lambda_0\)的\emph{几何重数}。
+\end{definition}
+
+\begin{theorem}
+    每个特征值的代数重数大于等于其几何重数。
+\end{theorem}
+
+\subsubsection*{特征向量的线性无关性}
+
+\begin{theorem}
+    属于不同特征值的特征向量是线性无关的。
+\end{theorem}
+
+\begin{theorem}
+    如果\(\enums{\lambda}{k}\)是矩阵\(\mata\)的不同特征值，\(\vecx_{i1},\vecx_{i2},\dots,\vecx_{ir_i}\)\((i=1,2,\dots,k)\)是属于特征值\(\lambda_i(i=1,2,\dots,k)\)的线性无关的特征向量，那么向量组\(\vecx_{11},\vecx_{12},\dots,\vecx_{1r_1}\)，\(\vecx_{21},\vecx_{22},\dots,\vecx_{2r_2}\)，\(\vecx_{k1},\vecx_{k2},\dots,\vecx_{kr_k}\)线性无关。
+\end{theorem}
+
+\subsection{矩阵的对角化}
+
+\subsubsection*{矩阵可对角化的条件}
+
+\begin{definition}[可对角化]
+    如果矩阵\(\mata\)与对角阵\(\matlam\)相似，即存在一个可逆矩阵\(\matp\)，使\(\inv{\matp}\mata\matp=\matlam\)，则称矩阵\(\mata\)\emph{可对角化}。
+\end{definition}
+
+\begin{theorem}
+    \(n\)阶矩阵\(\mata\)可对角化的充分必要条件是\(\mata\)有\(n\)个线性无关的特征向量。
+\end{theorem}
+
+\begin{theorem}
+    \(n\)阶矩阵\(\mata\)可对角化的充分必要条件是\(\mata\)的任一特征值的几何重数与代数重数相等。
+\end{theorem}
+
+\begin{infer}
+    具有\(n\)个不同特征值的\(n\)阶方阵一定可以对角化。
+\end{infer}
+
+\subsubsection*{实对称矩阵的对角化}
+
+\begin{theorem}
+    实对称矩阵的所有特征值是实数，所有特征向量是实向量。
+\end{theorem}
+
+\begin{theorem}
+    实对称矩阵的属于不同特征值的特征向量正交。
+\end{theorem}
+
+\begin{theorem}
+    设\(\mata\)是\(n\)阶实对称矩阵，则存在\(n\)阶正交阵\(\matp\)，使\(\matp^\top\mata\matp\)为对角阵。
+\end{theorem}
+
+\subsection{二次型}
+
+\subsubsection*{二次型的基本概念}
+
+\subsubsection*{二次型的标准形}
+
+\begin{definition}[二次型的标准形]
+    如果二次型只含有变量的平方项，即
+    \begin{align*}
+        f\mypar{\enums{y}{n}} & =b_1y_1^2+b^2y_2^2+\dots+b_ny_n^2                     \\
+                              & =\mat{\enums{y}{n}}\begin{bmatrix}
+                                                       b_1   &     &        & \mato \\
+                                                             & b_2 &        &       \\
+                                                             &     & \ddots &       \\
+                                                       \mato &     &        & b_n
+                                                   \end{bmatrix}\begin{bmatrix}
+                                                                    y_1 \\y_2\\\vdots\\y_n
+                                                                \end{bmatrix}
+    \end{align*}
+    这种形式称为二次型的\emph{标准形}。
+\end{definition}
+
+\begin{theorem}
+    对于二次型\(\vecx^\top\mata\vecx\)，存在正交阵\(\matp\)，使得经过正交变换\(\vecy=\matp^\top\vecx\)后二次型\(\vecx^\top\mata\vecx=\sum_{i=1}^n\sum_{j=1}^na_{ij}x_ix_j\)可化为标准形\(\lambda_1y_1^2+\lambda_2y_2^2+\dots+\lambda_ny_n^2\)，其中\(\enums{\lambda}{n}\)是实对称矩阵\(\mata\)的全部特征值。
+\end{theorem}
+
+\subsubsection*{Rayleigh商}
+
+\begin{theorem}
+    设\(\mata\)为\(n\)阶实对称矩阵，\(\vecx\)为\(n\)元单位列向量，则二次型\(\vecx^\top\mata\vecx\)的最大值为\(\mata\)的最大特征值，二次型\(\vecx^\top\mata\vecx\)的最小值为\(\mata\)的最小特征值。
+\end{theorem}
+
+\begin{definition}[Rayleigh商]
+    设\(\mata\)为\(n\)阶实对称矩阵，\(\vecx\)为\(n\)元非零列向量，称\(\frac{\vecx^\top\mata\vecx}{\vecx^\top\vecx}\)为\(\mata\)的\emph{Rayleigh商}。
+\end{definition}
+
+\subsection{正定矩阵}
+
+\subsubsection*{正定矩阵与半正定矩阵}
+
+\begin{theorem}
+    实对称矩阵正定的充分必要条件是它的所有特征值为正；实对称矩阵半正定的充分必要条件是它的所有特征值非负。
+\end{theorem}
+
+\begin{property}
+    正定矩阵的行列式为正；半正定矩阵的行列式非负。
+\end{property}
+
+\begin{property}
+    正定矩阵的主对角线上的元素都大于零。
+\end{property}
+
+\begin{property}
+    正定矩阵可逆，且其逆矩阵也是正定矩阵。
+\end{property}
+
+\begin{definition}[顺序主子式]
+    在\(n\)阶矩阵\(\mata\)中，取第\(1,2,\dots,k\)行及第\(1,2,\dots,k\)列得到\(\mata\)的\(k\)阶子矩阵的行列式\(\mypar{k\le n}\)，称为\(\mata\)的\(k\)阶\emph{顺序主子式}，通常记为\(\Delta_k\)：
+    \begin{align*}
+         & \Delta_1=a_{11},\Delta_2=\begin{vmatrix}
+                                        a_{11} & a_{12} \\a_{21}&a_{22}
+                                    \end{vmatrix},\dots \\
+         & \Delta_n=\sqmat{vmatrix}{a}{n}=\det{\mata}
+    \end{align*}
+\end{definition}
+
+\begin{theorem}
+    实对称矩阵正定的充分必要条件是其所有顺序主子式均为正。
+\end{theorem}
+
+\subsubsection*{负定矩阵与半负定矩阵}
+
+\begin{theorem}
+    实对称矩阵\(\mata\)负定当且仅当\(-\mata\)正定；实对称矩阵\(\mata\)半负定当且仅当\(-\mata\)半正定。
+\end{theorem}
+
+\begin{theorem}
+    实对称矩阵负定的充分必要条件是它的所有特征值为负；实对称矩阵半负定的充分必要条件是它的所有特征值小于等于零。
+\end{theorem}
+
+\begin{theorem}
+    实对称矩阵负定的充要条件是其顺序主子式的值负、正相间。
+\end{theorem}
+
 \end{document}
