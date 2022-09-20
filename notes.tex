@@ -941,4 +941,40 @@
     实对称矩阵负定的充要条件是其顺序主子式的值负、正相间。
 \end{theorem}
 
+\section{矩阵分解}
+
+\subsection{LU分解}
+
+\begin{theorem}
+    设\(m\times n\)矩阵\(\mata\)可以只经行初等变换化为阶梯型（这里的初等变换不包括行对换），则矩阵\(\mata\)可分解成\(\mata=\matl\matu\)，其中\(\matl\)是主对角线元素全是\(1\)的\(m\)阶下三角矩阵，\(\matu\)是一个\(m\times n\)阶梯型矩阵，这样一个分解称为矩阵\(\mata\)的\emph{LU分解}。
+\end{theorem}
+
+\subsection{QR分解}
+
+\subsection{Cholesky分解}
+
+\begin{theorem}[Cholesky分解]
+    设\(\mata\)是正定矩阵，则存在对角线元素均大于零的上三角矩阵\(\matr\)，使得\(\mata=\matr^\top\matr\)。
+
+    上式称为矩阵的\emph{Cholesky分解}。
+\end{theorem}
+
+\subsection{谱分解}
+
+\subsection{奇异值分解}
+
+\begin{definition}[奇异值]
+    设\(m\times n\)矩阵\(\mata\)的秩\(\rank{\mata}=r\)，\(\mata^\top\mata\)（或者\(\mata\mata^\top\)）非零特征值\(\enums{\lambda}{r}\)的算术平方根称为\(\mata\)的\emph{奇异值}，记作\(\enums{\sigma}{r}\)，即\(\sigma_i=\sqrt{\lambda_i}(1\le i\le r)\)。
+\end{definition}
+
+\begin{theorem}[奇异值分解]
+    设\(m\times n\)矩阵\(\mata\)的秩\(\rank{\mata}=r\)，则存在\(m\)阶正交阵\(\matu\)和\(n\)阶正交阵\(\matv\)使得\(\mata=\matu\matsig\matv^\top\)，其中\(\matsig\)为\(m\times n\)分块对角阵
+    \begin{equation*}
+        \matsig=\begin{bmatrix}
+            \matd & \mato \\\mato&\mato
+        \end{bmatrix}
+    \end{equation*}
+    此处\(\matd\)是一个\(r\times r\)对角阵，\(\matd\)的对角线元素是\(\mata\)的奇异值\(\sigma_1\ge\sigma_2\ge\cdots\ge\sigma_r>0\)。
+\end{theorem}
+
 \end{document}
