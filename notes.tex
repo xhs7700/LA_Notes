@@ -316,21 +316,11 @@
 \begin{definition}[行列式]
     设\(n\)阶方阵
     \begin{equation*}
-        \mata=\begin{bmatrix}
-            a_{11} & a_{12} & \cdots & a_{1n} \\
-            a_{21} & a_{22} & \cdots & a_{2n} \\
-            \vdots & \vdots &        & \vdots \\
-            a_{n1} & a_{n2} & \cdots & a_{nn}
-        \end{bmatrix}
+        \mata=\sqmat{bmatrix}{a}{n}
     \end{equation*}
     则方阵\(\mata\)的\emph{行列式}可定义为
     \begin{equation*}
-        \begin{vmatrix}
-            a_{11} & a_{12} & \cdots & a_{1n} \\
-            a_{21} & a_{22} & \cdots & a_{2n} \\
-            \vdots & \vdots &        & \vdots \\
-            a_{n1} & a_{n2} & \cdots & a_{nn}
-        \end{vmatrix}=\sum_{i_1i_2\cdots i_n}(-1)^{\tau\mypar{i_1i_2\cdots i_n}}a_{i_11}a_{i_22}\cdots a_{i_nn}
+        \sqmat{vmatrix}{a}{n}=\sum_{i_1i_2\cdots i_n}(-1)^{\tau\mypar{i_1i_2\cdots i_n}}a_{i_11}a_{i_22}\cdots a_{i_nn}
     \end{equation*}
 \end{definition}
 
@@ -484,12 +474,7 @@
 \begin{definition}[伴随矩阵]
     设\(A_{ij}\)是矩阵\(\mata=\mat{a_{ij}}_{n\times n}\)中元素\(a_{ij}\)的代数余子式，则称矩阵
     \begin{equation*}
-        \begin{bmatrix}
-            A_{11} & A_{12} & \cdots & A_{1n} \\
-            A_{21} & A_{22} & \cdots & A_{2n} \\
-            \vdots & \vdots &        & \vdots \\
-            A_{n1} & A_{n2} & \cdots & A_{nn}
-        \end{bmatrix}
+        \sqmat{bmatrix}{A}{n}
     \end{equation*}
     为矩阵\(\mata\)的\emph{伴随矩阵}，记作\(\mata^*\)或\(\adj{\mata}\)。
 \end{definition}
@@ -591,5 +576,213 @@
 \end{theorem}
 
 \subsubsection*{过渡矩阵}
+
+\begin{definition}[过渡矩阵]
+    设\(\enums{\veceps}{n}\)和\(\enums{\veceta}{n}\)是\(n\)维线性空间\(V\)的两组基，若\(\mat{\enums{\veceta}{n}}=\mat{\enums{\veceps}{n}}\matm\)，则称\(n\)阶方阵\(\matm\)为从基\(\enums{\veceps}{n}\)到基\(\enums{\veceta}{n}\)的\emph{过渡矩阵}。
+\end{definition}
+
+\begin{theorem}
+    过渡矩阵是可逆的。
+\end{theorem}
+
+\begin{theorem}[坐标变换公式]
+    设\(V\)是\(n\)维线性空间，\(\matm\)是由基\(\enums{\veceps}{n}\)到基\(\enums{\veceta}{n}\)的过渡矩阵，\(V\)中的向量\(\vecal\)在基\(\enums{\veceps}{n}\)和基\(\enums{\veceta}{n}\)下的坐标分别为\(\mat{\enums{x}{n}}^\top\)和\(\mat{\enums{x'}{n}}^\top\)，则
+    \begin{equation*}
+        \begin{bmatrix}
+            x_1 \\x_2\\\vdots\\x_n
+        \end{bmatrix}=\matm\begin{bmatrix}
+            x'_1 \\x'_2\\\vdots\\x'_n
+        \end{bmatrix}
+    \end{equation*}
+\end{theorem}
+
+\subsection{子空间}
+
+\subsubsection*{子空间的定义}
+
+\begin{theorem}
+    设\(V\)是数域\(\field\)上的线性空间，\(W\)是\(V\)的一个非空子集，若满足条件：
+    \begin{enumerate}
+        \item 如果\(\vecal,\vecbeta\in W\)，则\(\vecal+\vecbeta\in W\)；
+        \item 如果\(\vecal\in W,\lambda\in\field\)，则\(\lambda\vecal\in W\)，
+    \end{enumerate}
+    则\(W\)为\(V\)的一个子空间。
+\end{theorem}
+
+\begin{theorem}
+    向量组\(\enums{\vecal}{l}\)张成的子空间\(\myspan{\enums{\vecal}{l}}\)的维数等于向量组\(\enums{\vecal}{l}\)的秩。
+\end{theorem}
+
+\subsubsection*{零空间与列空间}
+
+\begin{theorem}
+    齐次线性方程组的解集\(\setof{\vecx\in\rea^n|\mata\vecx=\veczero}\)构成线性空间\(\rea^n\)的一个子空间；非齐次线性方程组的解集\(\setof{\vecx\in\rea^n|\mata\vecx=\vecb,\vecb\neq0}\)不构成子空间。
+\end{theorem}
+
+\begin{definition}[零空间]
+    齐次线性方程组\(\mata\vecx=\veczero\)的解集称为该齐次线性方程组的解空间，或称为矩阵\(\mata\)的\emph{零空间}，记作\(\nullsp{\mata}\)。
+\end{definition}
+
+\begin{definition}[列空间]
+    矩阵\(\mata\)的列向量张成的子空间称为矩阵\(\mata\)的\emph{列空间}，记作\(\colsp{\mata}\)。
+\end{definition}
+
+\begin{theorem}
+    线性方程组\(\mata\vecx=\vecb\)有解的充要条件是\(\vecb\in\colsp{\mata}\)。
+\end{theorem}
+
+\begin{theorem}
+    设\(m\times n\)矩阵\(\mata\)的秩\(\rank{\mata}=r\)，则
+    \begin{enumerate}
+        \item 矩阵\(\mata\)的列空间\(\colsp{\mata}=\setof{\sum_{j=1}^n\lambda_j\col{\mata}{j}|\lambda_j\in\rea}\)的维数\(\dim{\colsp{\mata}}=r\)；
+        \item 矩阵\(\mata\)的零空间\(\nullsp{\mata}=\setof{\vecx\in\rea^n|\mata\vecx=\veczero}\)的维数\(\dim{\nullsp{\mata}}=n-r\)。
+    \end{enumerate}
+\end{theorem}
+
+\subsubsection*{子空间的交与和}
+
+\begin{theorem}
+    设\(W_1\)与\(W_2\)是线性空间\(V\)的子空间，则\(W_1\cap W_2\)与\(W_1+W_2\)均为\(V\)的子空间。
+\end{theorem}
+
+\begin{theorem}[维数公式]
+    设\(W_1\)与\(W_2\)是线性空间\(V\)的子空间，则
+    \begin{equation*}
+        \dim W_1+\dim W_2=\dim\mypar{W_1+W_2}+\dim\mypar{W_1\cap W_2}
+    \end{equation*}
+\end{theorem}
+
+\begin{definition}[补空间]
+    设\(W_1\)与\(W_2\)是线性空间\(V\)的子空间，如果
+    \begin{equation*}
+        W_1\cap W_2=\setof{\veczero},W_1+W_2=V
+    \end{equation*}
+    则称\(W_2\)是\(W_1\)关于线性空间\(V\)的\emph{补空间}。
+\end{definition}
+
+\begin{theorem}[补空间存在性定理]
+    设\(W_1\)是\(n\)维线性空间\(V\)的子空间，则存在\(W_1\)关于线性空间\(V\)的补空间。
+\end{theorem}
+
+\subsection{内积空间}
+
+\subsubsection*{内积}
+
+\begin{definition}[内积]
+    设\(V\)是实数域\(\rea\)上的一个线性空间，如果二元运算\(\indot{\vecal}{\vecbeta}\)满足以下条件：
+    \begin{enumerate}
+        \item \(\indot{\vecal}{\vecbeta}=\indot{\vecbeta}{\vecal}\)；
+        \item \(\indot{k\vecal}{\vecbeta}=k\indot{\vecal}{\vecbeta}\)；
+        \item \(\indot{\vecal+\vecbeta}{\vecgamma}=\indot{\vecal}{\vecgamma}+\indot{\vecbeta}{\vecgamma}\)；
+        \item \(\indot{\vecal}{\vecal}\ge0\)，且\(\indot{\vecal}{\vecal}=0\)当且仅当\(\vecal\)为零元。
+    \end{enumerate}
+    其中\(\vecal,\vecbeta,\vecgamma\in V\)，\(k\in\rea\)，则称二元运算\(\indot{\vecal}{\vecbeta}\)为\(\vecal\)与\(\vecbeta\)的\emph{内积}。引入内积的线性空间称为内积空间。
+\end{definition}
+
+\begin{property}
+    \begin{equation*}
+        \indot{\sum_{i=1}^nk_i\vecal_i}{\sum_{j=1}^ml_j\vecbeta_j}=\sum_{i=1}^n\sum_{j=1}^mk_il_j\indot{\vecal_i}{\vecbeta_j}
+    \end{equation*}
+\end{property}
+
+\begin{property}[Cauchy-Schwarz不等式]
+    设\(\vecal,\vecbeta\)是内积空间\(V\)上的向量，则恒有
+    \begin{equation*}
+        \indot{\vecal}{\vecbeta}^2\le\indot{\vecal}{\vecal}\indot{\vecbeta}{\vecbeta}
+    \end{equation*}
+\end{property}
+
+\begin{definition}[模]
+    设\(\vecal\)是内积空间\(V\)中的一个向量，则\(\sqrt{\indot{\vecal}{\vecal}}\)称为向量\(\vecal\)的\emph{模}或者范数，记为\(\Abs{\vecal}\)。
+\end{definition}
+
+\begin{definition}[正交]
+    设\(V\)是一个内积空间，\(\vecal,\vecbeta\in V\)，如果\(\indot{\vecal}{\vecbeta}=0\)，则称\(\vecal\)与\(\vecbeta\)\emph{正交}，记为\(\vecal\bot\vecbeta\)。
+\end{definition}
+
+\begin{theorem}
+    设\(\enums{\vecal}{l}(l\le n)\)是\(n\)维内积空间\(V\)中的一个正交向量组，则\(\enums{\vecal}{l}\)线性无关。
+\end{theorem}
+
+\begin{theorem}
+    设\(\enums{\veceps}{n}\)是\(n\)维内积空间\(V\)的一个标准正交基，\(\vecal\in V\)，\(\vecbeta\in V\)，\(\vecal\)与\(\vecbeta\)在该标准正交基下的坐标向量分别为\(\vecx=\mat{\enums{x}{n}}^\top\)和\(\vecy=\mat{\enums{y}{n}}^\top\)，则\(\vecal\)与\(\vecbeta\)的内积\(\indot{\vecal}{\vecbeta}=\vecx^\top\vecy\)。
+\end{theorem}
+
+\subsubsection*{正交投影与最小二乘解}
+
+\subsubsection*{Schimidt正交化}
+
+\subsubsection*{正交补空间}
+
+\begin{theorem}
+    若\(W_1\bot W_2\)，则\(W_1\cap W_2=\setof{\veczero}\)。
+\end{theorem}
+
+\begin{definition}[正交补空间]
+    设\(W_1,W_2\)是内积空间\(V\)的两个子空间，如果\(W_1\bot W_2\)，且\(W_1+W_2=V\)，则称\(W_2\)是\(W_1\)的\emph{正交补空间}，简称正交补，记作\(W_2=\ortcom{W_1}\)。
+\end{definition}
+
+\begin{infer}
+    \(\colsp{\mata}\)是\(\nullsp{\mata^\top}\)的正交补空间，即\(\ortcom{\colsp{\mata}}=\nullsp{\mata^\top}\)。
+\end{infer}
+
+\subsection{线性变换}
+
+\subsubsection*{线性映射与线性变换}
+
+\begin{property}
+    设\(T\)是线性空间\(V\)中的线性变换，则\(T\mypar{\veczero}=\veczero\)。
+\end{property}
+
+\begin{property}
+    设\(T\)是线性空间\(V\)中的线性变换，\(\enums{\vecal}{m}\)是\(V\)中的\(m\)个向量，\(\vecx=\mat{\enums{x}{m}}^\top\)，则
+    \begin{equation*}
+        T\mypar{\mat{\enums{\vecal}{m}\vecx}}=T\mypar{\enums{\vecal}{m}}\vecx
+    \end{equation*}
+\end{property}
+
+\begin{theorem}
+    设\(\enums{\veceps}{n}\)是\(n\)维线性空间\(V\)的一组基，对于\(V\)中任意\(n\)个向量\(\enums{\vecal}{n}\)，存在唯一的线性变换\(T\)使得
+    \begin{equation*}
+        T(\veceps_i)=\vecal_i(i=1,2,\dots,n)
+    \end{equation*}
+\end{theorem}
+
+\subsubsection*{线性变换的表示矩阵}
+
+\begin{definition}[表示矩阵]
+    设\(\enums{\veceps}{n}\)是\(n\)维线性空间\(V\)的一组基，\(T\)是线性空间\(V\)的一个线性变换，基的像可以表示为
+    \begin{align*}
+        T\mypar{\enums{\veceps}{n}} & =\mat{T\mypar{\veceps_1},T\mypar{\veceps_2},\dots,T\mypar{\veceps_n}} \\
+                                    & =\mat{\enums{\veceps}{n}}\sqmat{bmatrix}{\alpha}{n}
+    \end{align*}
+    其中矩阵
+    \begin{equation*}
+        \sqmat{bmatrix}{\alpha}{n}
+    \end{equation*}
+    称为线性变换\(T\)在基\(\enums{\veceps}{n}\)下的\emph{表示矩阵}。
+\end{definition}
+
+\begin{theorem}
+    在给定基下，线性变换与其表示矩阵是一一对应的。
+\end{theorem}
+
+\begin{theorem}
+    设线性变换\(T\)在基\(\enums{\veceps}{n}\)下的表示矩阵是\(\mata\)，向量\(\xi\)在基\(\enums{\veceps}{n}\)下的坐标为\(\vecx=\mat{\enums{x}{n}}^\top\)，则\(T\mypar{\xi}\)在基\(\enums{\veceps}{n}\)下的坐标为\(\mata\vecx\)。
+\end{theorem}
+
+\begin{theorem}
+    设线性变换\(T\)在线性空间\(V\)的两组基\(\enums{\veceps}{n}\)和\(\enums{\veceta}{n}\)下的表示矩阵分别是\(\mata\)和\(\matb\)，从基\(\enums{\veceps}{n}\)到基\(\enums{\veceta}{n}\)的过渡矩阵为\(\matm\)，则\(\matb=\inv{\matm}\mata\matm\)。
+\end{theorem}
+
+\begin{definition}[相似]
+    对于\(n\)阶矩阵\(\mata\)和\(\matb\)，若存在一个\(n\)阶可逆矩阵\(\matp\)，使得\(\inv{\matp}\mata\matp=\matb\)，则称矩阵\(\mata\)与\(\matb\)\emph{相似}，记作\(\mata\sim\matb\)。
+\end{definition}
+
+\subsubsection*{正交变换}
+
+\begin{theorem}
+    正交变换保持向量的内积不变。
+\end{theorem}
 
 \end{document}
